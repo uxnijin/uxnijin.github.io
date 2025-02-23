@@ -7,41 +7,51 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 </head>
-<body  class="bg-white dark:bg-black">
+<body class="bg-white dark:bg-black">
     <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 h-screen flex flex-col justify-between items-center overflow-hidden">
         <!-- Header Section -->
         <header class="w-full h-[33px] flex justify-between items-center">
-            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">uxnijin</div>
             <a href="index.html">
-            <button class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
-                close
-            </button>
-        </a>
+                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">uxnijin</div>
+            </a>
+            <a id="close-link" href="index.html">
+                <button class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+                    close
+                </button>
+            </a>
         </header>
         <div class="max-w-[638px] grow shrink basis-0 flex-col justify-center items-center gap-2 flex">
-            <div class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
                 <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">About</div>
-            </div>
-            <div class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+            </button>
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
                 <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Works</div>
-            </div>
-            <div class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Experience</div>
-            </div>
-            <div class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+            </button>
+            <a href="experience.html">
+                <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Experience</div>
+                </button>
+            </a>
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
                 <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Writings</div>
-            </div>
-            <div class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+            </button>
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
                 <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Life</div>
-            </div>
+            </button>
         </div>
         <footer class="w-full flex justify-center">
-            <a href="#">
-            <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white dark:hover:text-black transition duration-300">
-                contact
-            </button>
-        </a>
+            <a href="mailto:uxnijin@gmail.com">
+                <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 hover:scale-105 transition duration-200 dark:text-white text-sm font-medium font-['Inter'] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition duration-300">
+                    contact
+                </button>
+            </a>
         </footer>
     </div>
+    <script>
+        // Set the close button href to the previous page (referrer), defaulting to index.html if no referrer
+        const closeLink = document.getElementById('close-link');
+        const referrer = document.referrer ? new URL(document.referrer).pathname : '/index.html';
+        closeLink.href = referrer || 'index.html';
+    </script>
 </body>
 </html>
