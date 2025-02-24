@@ -12,7 +12,9 @@
     <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 h-screen flex flex-col justify-between items-center overflow-hidden">
         <!-- Header Section -->
         <header class="w-full h-[33px] flex justify-between items-center">
-            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">uxnijin</div>
+            <a href="index.html">
+                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
+            </a>
             <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">experience</div>
             <a href="menu.html">
                 <button aria-label="Open menu" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
@@ -26,49 +28,51 @@
             <!-- Work Experience -->
             <div class="w-full flex flex-col gap-6">
                 <h2 class="text-black dark:text-white text-base md:text-lg font-medium font-['Inter']">Work Experience</h2>
-                <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-4">
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Designer at Qmark Technolabs</span>
-                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Apr 2024 - Oct 2024</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Designer at Tinkerhub Organization</span>
-                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Sep 2023 - Jun 2024</span>
-                    </div>
-                    <!-- Repeated Tinkerhub entries consolidated; add more if intentional -->
-                </div>
+                <div class="flex flex-col gap-4" id="work-experience"></div>
             </div>
 
             <!-- Education -->
             <div class="w-full flex flex-col gap-6">
                 <h2 class="text-black dark:text-white text-base md:text-lg font-medium font-['Inter']">Education</h2>
-                <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-4">
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">BSc Computer Science</span>
-                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Mar 2021 - Mar 2024</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Plus Two</span>
-                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
-                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Mar 2019 - Mar 2021</span>
-                    </div>
-                </div>
+                <div class="flex flex-col gap-4" id="education"></div>
             </div>
         </main>
 
         <!-- Contact Section -->
         <footer class="w-full flex justify-center">
-            <a href="mailto:uxnijin@example.com">
-                <button aria-label="Contact Nijin" class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-300">
-                    contact
-                </button>
+            <a id="contact-link">
+                
             </a>
         </footer>
     </div>
+    <script src="data.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+            document.getElementById('contact-link').href = portfolioData.contactEmail;
+
+            const workContainer = document.getElementById('work-experience');
+            portfolioData.experience.work.forEach(item => {
+                workContainer.innerHTML += `
+                    <div class="flex items-center gap-4">
+                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">${item.title}</span>
+                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
+                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">${item.duration}</span>
+                    </div>
+                `;
+            });
+
+            const educationContainer = document.getElementById('education');
+            portfolioData.experience.education.forEach(item => {
+                educationContainer.innerHTML += `
+                    <div class="flex items-center gap-4">
+                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">${item.title}</span>
+                        <div class="flex-1 border-b border-dashed border-black/10 dark:border-white/10"></div>
+                        <span class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">${item.duration}</span>
+                    </div>
+                `;
+            });
+        });
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         } else {

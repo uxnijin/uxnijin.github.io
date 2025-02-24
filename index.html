@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Nijin, a UI/UX Designer creating functional and beautiful designs.">
     <title>Nijin - UI UX Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <!-- Script to toggle dark mode based on system theme -->
     <script>
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -21,32 +21,31 @@
 <body class="bg-white dark:bg-black">
     <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 h-screen flex flex-col justify-between items-center overflow-hidden">
         <!-- Header Section -->
-        <header class="w-full  h-[33px] flex justify-between items-center">
-            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">uxnijin</div>
+
+        <header class="w-full h-[33px] flex justify-between items-center">
+            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
             <a href="menu.html">
                 <button class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
                     menu
-                  </button>
-        </a>
+                </button>
+            </a>
         </header>
 
         <!-- Bio Section -->
         <main class="w-full max-w-[638px] flex-grow flex justify-center items-center">
-            <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">
-                Nijin is a UI UX Designer who loves creating things that look good and work well.<br><br>
-                He's currently a UI UX Designer at Qmark Technolabs. Previously, he was a designer at Moonley Interactive & RITS.<br><br>
-                He received a Bachelor of Science in Computer Science after studying at Farook College, India.
-            </p>
+            <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']" id="bio-description"></p>
         </main>
 
         <!-- Contact Section -->
-        <footer class="w-full flex justify-center">
-            <a href="#">
-            <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white text-sm font-medium font-['Inter'] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition duration-300">
-                contact
-            </button>
-        </a>
-        </footer>
+        
     </div>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+            document.getElementById('bio-description').innerHTML = portfolioData.bio.description;
+            document.getElementById('contact-link').href = portfolioData.contactEmail;
+        });
+    </script>
 </body>
 </html>

@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white dark:bg-black">
-    <div class="w-full px-2 py-4 sm:px-2 sm:py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
-        <!-- Header Section -->
+    <div class="w-full px-4 py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden pb-[33px]">
+        <!-- Header Section (Fixed) -->
         <header class="w-full h-[33px] flex justify-between items-center">
             <a href="index.html">
-                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">uxnijin</div>
+                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
             </a>
             <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">works</div>
             <a href="menu.html">
@@ -25,65 +25,43 @@
 
         <!-- Works Section -->
         <main class="w-full flex-grow flex flex-col justify-start items-center gap-8 py-12">
-            <div class="w-full max-w-[638px] flex flex-col gap-8 md:gap-8">
-                <!-- Row 1 -->
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center md:items-start">
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 1" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 2" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center md:items-start">
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 3" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 4" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                </div>
-                <!-- Row 3 -->
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center md:items-start">
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 5" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <img src="assets/works.png" alt="Work 6" class="w-full max-w-[311px] rounded-xl mx-auto">
-                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-sm font-medium font-['Inter'] text-left max-w-[311px] mx-auto md:mx-0">
-                            Designing for AI Engineers: UI patterns you need to know
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="w-full max-w-[638px] flex flex-col gap-8 md:gap-8" id="works-container"></div>
         </main>
 
         <!-- Contact Section -->
         <footer class="w-full flex justify-center pb-4">
-            <a href="mailto:uxnijin@example.com">
-                <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-300">
+            <a id="contact-link">
+                <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:scale-105 transition duration-200 text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10">
                     contact
                 </button>
             </a>
         </footer>
     </div>
+    <script src="data.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+            document.getElementById('contact-link').href = portfolioData.contactEmail;
+
+            const worksContainer = document.getElementById('works-container');
+            portfolioData.works.forEach((work, index) => {
+                const workId = work.id || `work${index + 1}`; // Use provided id or generate one
+                if (index % 2 === 0) {
+                    worksContainer.innerHTML += '<div class="flex flex-col md:flex-row gap-4 justify-center items-center md:items-start">';
+                }
+                worksContainer.lastElementChild.innerHTML += `
+                    <a href="work-detail.html?id=${workId}" class="block w-full md:w-auto">
+                        <div class="flex flex-col gap-4 hover:bg-black/5 dark:hover:bg-white/10 hover:scale-[1.02] transition duration-200 rounded-xl p-4">
+                            <img src="${work.image}" alt="${work.title}" class="w-full rounded-xl mx-auto">
+                            <div class="text-black/75 dark:text-gray-300 text-base md:text-base font-medium font-['Inter'] text-left mx-auto md:mx-0">${work.title}</div>
+                        </div>
+                    </a>
+                `;
+                if (index % 2 === 1 || index === portfolioData.works.length - 1) {
+                    worksContainer.lastElementChild.innerHTML += '</div>';
+                }
+            });
+        });
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         } else {
