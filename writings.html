@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white dark:bg-black">
-    <div class="w-full px-2 py-4 sm:px-2 sm:py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
+    <div class="w-full p-4 sm:px-2 sm:py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
         <!-- Header Section -->
         <header class="w-full h-[33px] flex justify-between items-center">
             <a href="index.html">
@@ -25,7 +25,7 @@
 
         <!-- Writings Section -->
         <main class="w-full flex-grow flex flex-col justify-start items-center gap-8 py-12">
-            <div class="w-full max-w-[638px] flex flex-col gap-4 md:gap-8" id="writings-container"></div>
+            <div class="w-full max-w-[638px] flex flex-col gap-2 md:gap-2" id="writings-container"></div>
         </main>
 
         <!-- Contact Section -->
@@ -45,12 +45,12 @@
             portfolioData.writings.forEach(writing => {
                 writingsContainer.innerHTML += `
                     <a href="writings-detail.html?id=${writing.id}" class="block">
-                        <div class="flex flex-col md:flex-row gap-4 hover:bg-black/5 dark:hover:bg-white/10 hover:scale-[1.02] transition duration-200 rounded-xl p-4">
+                        <div class="flex md:flex-row gap-4 hover:bg-black/5 dark:hover:bg-white/10 hover:scale-[1.02] transition duration-200 rounded-xl p-3">
                             <div class="relative w-[160px] h-[90px] bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden shrink-0">
                                 <img src="${writing.thumbnail}" alt="${writing.title} thumbnail" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col justify-between w-full">
-                                <div class="text-black/75 dark:text-gray-300 text-[13px] md:text-lg font-medium font-['Inter']">
+                                <div class="text-black/75 dark:text-gray-300 text-[13px] md:text-lg font-medium font-['Inter'] line-clamp-3 md:line-clamp-2">
                                     ${writing.title}
                                 </div>
                                 <div class="text-black/50 dark:text-gray-500 text-xs md:text-sm font-medium font-['Inter']">
