@@ -7,54 +7,229 @@
     <title>Nijin - About</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <style>
+        #menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-y: auto;
+        }
+        #about-featured {
+            width: 100%;
+            max-width: 638px;
+            max-height: 398px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+        }
+        /* Fade Up animation for page content */
+        .load-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        /* Fade Up animation for menu overlay */
+        .menu-load-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Staggered delays for page content */
+        header.load-fade-up {
+            animation-delay: 0s;
+        }
+        #about-featured.load-fade-up {
+            animation-delay: 0.2s;
+        }
+        #about-description.load-fade-up {
+            animation-delay: 0.4s;
+        }
+        #about-qmark-title.load-fade-up {
+            animation-delay: 0.6s;
+        }
+        #about-qmark-content.load-fade-up {
+            animation-delay: 0.8s;
+        }
+        /* Staggered delays for menu overlay */
+        #menu-header.menu-load-fade-up {
+            animation-delay: 0s;
+        }
+        #menu-link-1.menu-load-fade-up {
+            animation-delay: 0.2s;
+        }
+        #menu-link-2.menu-load-fade-up {
+            animation-delay: 0.4s;
+        }
+        #menu-link-3.menu-load-fade-up {
+            animation-delay: 0.6s;
+        }
+        #menu-link-4.menu-load-fade-up {
+            animation-delay: 0.8s;
+        }
+        #menu-link-5.menu-load-fade-up {
+            animation-delay: 1.0s;
+        }
+        #menu-footer.menu-load-fade-up {
+            animation-delay: 1.2s;
+        }
+    </style>
+    <script>
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.classList.toggle('dark', e.matches);
+        });
+    </script>
 </head>
 <body class="bg-white dark:bg-black">
     <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
         <!-- Header Section -->
-        <header class="w-full h-[33px] flex justify-between items-center">
+        <header class="w-full pt-4 pb-4 flex justify-between items-center load-fade-up">
             <a href="index.html">
                 <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
             </a>
-            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">about</div>
-            <a href="menu.html">
-                <button class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
-                    menu
-                </button>
-            </a>
+            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">Who I Am</div>
+            <button id="menu-toggle" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+                menu
+            </button>
         </header>
 
         <!-- About Section -->
         <main class="w-full max-w-[638px] flex-grow flex flex-col justify-start items-center gap-8 md:gap-16 py-12 overflow-y-auto">
-            <img id="about-featured" alt="About featured image" class="w-full max-w-[638px] h-[398px] rounded-xl">
+            <img id="about-featured" alt="About featured image" class="load-fade-up">
             <div class="w-full flex flex-col gap-8">
-                <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-normal font-['Inter'] leading-7 md:leading-[36px]" id="about-description"></p>
+                <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-normal font-['Inter'] leading-7 md:leading-[36px] load-fade-up" id="about-description"></p>
                 <div class="flex flex-col gap-4">
-                    <h2 class="text-black/75 dark:text-gray-300 text-sm md:text-base font-semibold font-['Inter'] leading-7 md:leading-[36px]" id="about-qmark-title"></h2>
-                    <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-normal font-['Inter'] leading-7 md:leading-[36px]" id="about-qmark-content"></p>
+                    <h2 class="text-black/75 dark:text-gray-300 text-sm md:text-base font-semibold font-['Inter'] leading-7 md:leading-[36px] load-fade-up" id="about-qmark-title"></h2>
+                    <p class="text-black/75 dark:text-gray-300 text-sm md:text-base font-normal font-['Inter'] leading-7 md:leading-[36px] load-fade-up" id="about-qmark-content"></p>
                 </div>
             </div>
         </main>
-
-        <!-- Contact Section -->
-        
     </div>
+
+    <!-- Menu Overlay -->
+    <div id="menu-overlay" class="bg-white dark:bg-black">
+        <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center">
+            <div id="menu-header" class="w-full h-[33px] flex justify-between items-center bg-white dark:bg-black menu-load-fade-up">
+                <a href="index.html">
+                    <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name-overlay"></div>
+                </a>
+                <button id="close-button" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+                    close
+                </button>
+            </div>
+            <div class="max-w-[638px] flex-grow flex flex-col justify-center items-center gap-2 pt-[33px]">
+                <a href="about.html" id="menu-link-1" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Who I Am</div>
+                    </button>
+                </a>
+                <a href="works.html" id="menu-link-2" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Stuff I’ve Built</div>
+                    </button>
+                </a>
+                <a href="experience.html" id="menu-link-3" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Path</div>
+                    </button>
+                </a>
+                <a href="writings.html" id="menu-link-4" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Thoughts</div>
+                    </button>
+                </a>
+                <button id="menu-link-5" class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex menu-load-fade-up">
+                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Life</div>
+                </button>
+            </div>
+            <footer id="menu-footer" class="w-full flex justify-center items-center gap-4 pb-4 menu-load-fade-up">
+                <a href="https://www.instagram.com/uxnijin/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/instagram.svg" alt="Instagram" height="20" width="20" class="dark:hidden">
+                    <img src="assets/instagram-dark.svg" alt="Instagram Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a href="https://medium.com/@nijinmuhammed" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/medium.svg" alt="Medium" height="20" width="20" class="dark:hidden">
+                    <img src="assets/medium-dark.svg" alt="Medium Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a id="contact-link" href="mailto:uxnijin@example.com">
+                    <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:scale-105 transition duration-200 text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10">
+                        contact
+                    </button>
+                </a>
+                <a href="https://www.threads.net/@uxnijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/threads.svg" alt="Threads" height="20" width="20" class="dark:hidden">
+                    <img src="assets/threads-dark.svg" alt="Threads Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a href="https://x.com/MuhammedNijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/x.svg" alt="X" height="20" width="20" class="dark:hidden">
+                    <img src="assets/x-dark.svg" alt="X Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuOverlay = document.getElementById('menu-overlay');
+            let isMenuOpen = false;
+
+            menuToggle.addEventListener('click', () => {
+                if (!isMenuOpen) {
+                    menuOverlay.style.display = 'flex';
+                    menuToggle.textContent = 'close';
+                    isMenuOpen = true;
+                } else {
+                    menuOverlay.style.display = 'none';
+                    menuToggle.textContent = 'menu';
+                    isMenuOpen = false;
+                }
+            });
+
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.id === 'close-button') {
+                    menuOverlay.style.display = 'none';
+                    menuToggle.textContent = 'menu';
+                    isMenuOpen = false;
+                }
+            });
+        });
+    </script>
     <script src="data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
-            document.getElementById('about-featured').src = portfolioData.about.featuredImage;
-            document.getElementById('about-description').innerHTML = portfolioData.about.description;
-            document.getElementById('about-qmark-title').innerHTML = portfolioData.about.qmark.title;
-            document.getElementById('about-qmark-content').innerHTML = portfolioData.about.qmark.content;
-            document.getElementById('contact-link').href = portfolioData.contactEmail;
-        });
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');   
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            document.documentElement.classList.toggle('dark', e.matches);
+            console.log('data.js script loaded successfully');
+            try {
+                document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+                document.getElementById('about-featured').src = portfolioData.about.featuredImage;
+                document.getElementById('about-description').innerHTML = portfolioData.about.description;
+                document.getElementById('about-qmark-title').innerHTML = portfolioData.about.qmark.title;
+                document.getElementById('about-qmark-content').innerHTML = portfolioData.about.qmark.content;
+                document.getElementById('contact-link').href = portfolioData.contactEmail;
+                document.getElementById('bio-name-overlay').innerHTML = portfolioData.bio.name;
+            } catch (error) {
+                console.error('Error loading data from data.js:', error);
+            }
         });
     </script>
 </body>

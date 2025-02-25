@@ -7,61 +7,73 @@
     <title>Nijin - Writings</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white dark:bg-black">
-    <div class="w-full p-4 sm:px-2 sm:py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
-        <!-- Header Section -->
-        <header class="w-full h-[33px] flex justify-between items-center">
-            <a href="index.html">
-                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
-            </a>
-            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">writings</div>
-            <a href="menu.html">
-                <button class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
-                    menu
-                </button>
-            </a>
-        </header>
-
-        <!-- Writings Section -->
-        <main class="w-full flex-grow flex flex-col justify-start items-center gap-8 py-12">
-            <div class="w-full max-w-[638px] flex flex-col gap-2 md:gap-2" id="writings-container"></div>
-        </main>
-
-        <!-- Contact Section -->
-        <footer class="w-full flex justify-center pb-4">
-            <a id="contact-link">
-                
-            </a>
-        </footer>
-    </div>
-    <script src="data.js"></script>
+    <style>
+        #menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-y: auto;
+        }
+        /* Fade Up animation for page content */
+        .load-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        /* Fade Up animation for menu overlay */
+        .menu-load-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Staggered delays for page content */
+        header.load-fade-up {
+            animation-delay: 0s;
+        }
+        #writings-container.load-fade-up {
+            animation-delay: 0.2s;
+        }
+        /* Staggered delays for menu overlay */
+        #menu-header.menu-load-fade-up {
+            animation-delay: 0s;
+        }
+        #menu-link-1.menu-load-fade-up {
+            animation-delay: 0.2s;
+        }
+        #menu-link-2.menu-load-fade-up {
+            animation-delay: 0.4s;
+        }
+        #menu-link-3.menu-load-fade-up {
+            animation-delay: 0.6s;
+        }
+        #menu-link-4.menu-load-fade-up {
+            animation-delay: 0.8s;
+        }
+        #menu-link-5.menu-load-fade-up {
+            animation-delay: 1.0s;
+        }
+        #menu-footer.menu-load-fade-up {
+            animation-delay: 1.2s;
+        }
+    </style>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
-            document.getElementById('contact-link').href = portfolioData.contactEmail;
-
-            const writingsContainer = document.getElementById('writings-container');
-            portfolioData.writings.forEach(writing => {
-                writingsContainer.innerHTML += `
-                    <a href="writings-detail.html?id=${writing.id}" class="block">
-                        <div class="flex md:flex-row gap-4 hover:bg-black/5 dark:hover:bg-white/10 hover:scale-[1.02] transition duration-200 rounded-xl p-3">
-                            <div class="relative w-[160px] h-[90px] bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden shrink-0">
-                                <img src="${writing.thumbnail}" alt="${writing.title} thumbnail" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex flex-col justify-between w-full">
-                                <div class="text-black/75 dark:text-gray-300 text-[13px] md:text-lg font-medium font-['Inter'] line-clamp-3 md:line-clamp-2">
-                                    ${writing.title}
-                                </div>
-                                <div class="text-black/50 dark:text-gray-500 text-xs md:text-sm font-medium font-['Inter']">
-                                    ${writing.content.readTime}
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                `;
-            });
-        });
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         } else {
@@ -69,6 +81,151 @@
         }
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             document.documentElement.classList.toggle('dark', e.matches);
+        });
+    </script>
+</head>
+<body class="bg-white dark:bg-black">
+    <div class="w-full p-4 sm:px-2 sm:py-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center overflow-hidden">
+        <!-- Header Section -->
+        <header class="w-full pt-4 pb-4 flex justify-between items-center load-fade-up">
+            <a href="index.html">
+                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
+            </a>
+            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']">My Thoughts</div>
+            <button id="menu-toggle" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+                menu
+            </button>
+        </header>
+
+        <!-- Writings Section -->
+        <main class="w-full flex-grow flex flex-col justify-start items-center gap-8 py-12">
+            <div class="w-full max-w-[638px] flex flex-col gap-2 md:gap-2 load-fade-up" id="writings-container"></div>
+        </main>
+
+        <!-- Contact Section -->
+        <footer class="w-full flex justify-center pb-4">
+            <a id="contact-link"></a>
+        </footer>
+    </div>
+    <div id="menu-overlay" class="bg-white dark:bg-black">
+        <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center">
+            <div id="menu-header" class="w-full h-[33px] flex justify-between items-center bg-white dark:bg-black menu-load-fade-up">
+                <a href="index.html">
+                    <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name-overlay"></div>
+                </a>
+                <button id="close-button" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+                    close
+                </button>
+            </div>
+            <div class="max-w-[638px] flex-grow flex flex-col justify-center items-center gap-2 pt-[33px]">
+                <a href="about.html" id="menu-link-1" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Who I Am</div>
+                    </button>
+                </a>
+                <a href="works.html" id="menu-link-2" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Stuff I’ve Built</div>
+                    </button>
+                </a>
+                <a href="experience.html" id="menu-link-3" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Path</div>
+                    </button>
+                </a>
+                <a href="writings.html" id="menu-link-4" class="menu-load-fade-up">
+                    <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Thoughts</div>
+                    </button>
+                </a>
+                <button id="menu-link-5" class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex menu-load-fade-up">
+                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Life</div>
+                </button>
+            </div>
+            <footer id="menu-footer" class="w-full flex justify-center items-center gap-4 pb-4 menu-load-fade-up">
+                <a href="https://www.instagram.com/uxnijin/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/instagram.svg" alt="Instagram" height="20" width="20" class="dark:hidden">
+                    <img src="assets/instagram-dark.svg" alt="Instagram Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a href="https://medium.com/@nijinmuhammed" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/medium.svg" alt="Medium" height="20" width="20" class="dark:hidden">
+                    <img src="assets/medium-dark.svg" alt="Medium Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a id="contact-link" href="mailto:uxnijin@example.com">
+                    <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:scale-105 transition duration-200 text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10">
+                        contact
+                    </button>
+                </a>
+                <a href="https://www.threads.net/@uxnijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/threads.svg" alt="Threads" height="20" width="20" class="dark:hidden">
+                    <img src="assets/threads-dark.svg" alt="Threads Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+                <a href="https://x.com/MuhammedNijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+                    <img src="assets/x.svg" alt="X" height="20" width="20" class="dark:hidden">
+                    <img src="assets/x-dark.svg" alt="X Dark" height="20" width="20" class="hidden dark:block">
+                </a>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuOverlay = document.getElementById('menu-overlay');
+            let isMenuOpen = false;
+
+            menuToggle.addEventListener('click', () => {
+                if (!isMenuOpen) {
+                    menuOverlay.style.display = 'flex';
+                    menuToggle.textContent = 'close';
+                    isMenuOpen = true;
+                } else {
+                    menuOverlay.style.display = 'none';
+                    menuToggle.textContent = 'menu';
+                    isMenuOpen = false;
+                }
+            });
+
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.id === 'close-button') {
+                    menuOverlay.style.display = 'none';
+                    menuToggle.textContent = 'menu';
+                    isMenuOpen = false;
+                }
+            });
+        });
+    </script>
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('data.js script loaded successfully');
+            try {
+                document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+                document.getElementById('contact-link').href = portfolioData.contactEmail;
+                document.getElementById('bio-name-overlay').innerHTML = portfolioData.bio.name;
+
+                const writingsContainer = document.getElementById('writings-container');
+                portfolioData.writings.forEach(writing => {
+                    writingsContainer.innerHTML += `
+                        <a href="writings-detail.html?id=${writing.id}" class="block">
+                            <div class="flex md:flex-row gap-4 hover:bg-black/5 dark:hover:bg-white/10 hover:scale-[1.02] transition duration-200 rounded-xl p-3">
+                                <div class="relative w-[160px] h-[90px] bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden shrink-0">
+                                    <img src="${writing.thumbnail}" alt="${writing.title} thumbnail" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex flex-col justify-between w-full">
+                                    <div class="text-black/75 dark:text-gray-300 text-[13px] md:text-lg font-medium font-['Inter'] line-clamp-3 md:line-clamp-2">
+                                        ${writing.title}
+                                    </div>
+                                    <div class="text-black/50 dark:text-gray-500 text-xs md:text-sm font-medium font-['Inter']">
+                                        ${writing.content.readTime}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error loading data from data.js:', error);
+            }
         });
     </script>
 </body>

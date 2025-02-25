@@ -1,98 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio navigation for Nijin, a UI/UX Designer.">
-    <title>Nijin - UI UX Designer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white dark:bg-black">
-    <div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 h-screen flex flex-col justify-between items-center overflow-hidden">
-        <!-- Header Section -->
-        <header class="w-full h-[33px] flex justify-between items-center bg-white dark:bg-black">
-            <a href="index.html">
-                <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name"></div>
-            </a>
-            <button id="close-button" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
-                close
-            </button>
-        </header>
-        <div class="max-w-[638px] grow shrink basis-0 flex flex-col justify-center items-center gap-2 pt-[33px]">
-            <a href="about.html">
-                <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">About</div>
-                </button>
-            </a>
-            <a href="works.html">
-                <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Works</div>
-                </button>
-            </a>
-            <a href="experience.html">
-                <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Experience</div>
-                </button>
-            </a>
-            <a href="writings.html">
-                <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                    <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Writings</div>
-                </button>
-            </a>
-            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Life</div>
-            </button>
-        </div>
-        <footer class="w-full flex justify-center items-center gap-4">
-            <a id="instagram-link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
-                <img src="assets/instagram.svg" alt="Instagram" height="20" width="20" class="dark:hidden">
-                <img src="assets/instagram-dark.svg" alt="Instagram Dark" height="20" width="20" class="hidden dark:block">
-            </a>
-            <a id="medium-link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
-                <img src="assets/medium.svg" alt="Medium" height="20" width="20" class="dark:hidden">
-                <img src="assets/medium-dark.svg" alt="Medium Dark" height="20" width="20" class="hidden dark:block">
-            </a>
-            <a id="contact-link">
-                <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:scale-105 transition duration-200 text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10">
-                    contact
-                </button>
-            </a>
-            <a id="threads-link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
-                <img src="assets/threads.svg" alt="Threads" height="20" width="20" class="dark:hidden">
-                <img src="assets/threads-dark.svg" alt="Threads Dark" height="20" width="20" class="hidden dark:block">
-            </a>
-            <a id="x-link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
-                <img src="assets/x.svg" alt="X" height="20" width="20" class="dark:hidden">
-                <img src="assets/x-dark.svg" alt="X Dark" height="20" width="20" class="hidden dark:block">
-            </a>
-        </footer>
+<div class="w-full p-4 sm:p-4 md:p-6 lg:p-7 xl:p-9 min-h-screen flex flex-col justify-between items-center">
+    <div class="w-full h-[33px] flex justify-between items-center bg-white dark:bg-black">
+        <a href="index.html">
+            <div class="text-black dark:text-white text-sm md:text-base font-medium font-['Inter']" id="bio-name">uxnijin</div>
+        </a>
+        <button id="close-button" class="rounded-lg text-black dark:text-white text-sm md:text-base font-medium font-['Inter'] hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-1.5 py-1 md:px-3 md:py-1">
+            close
+        </button>
     </div>
-    <script src="data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
-            document.getElementById('contact-link').href = portfolioData.contactEmail;
-
-            const closeButton = document.getElementById('close-button');
-            const referrer = document.referrer ? new URL(document.referrer).href : 'index.html';
-            closeButton.addEventListener('click', () => {
-                window.location.href = referrer;
-            });
-
-            document.getElementById('instagram-link').href = portfolioData.socialLinks.instagram;
-            document.getElementById('medium-link').href = portfolioData.socialLinks.medium;
-            document.getElementById('threads-link').href = portfolioData.socialLinks.threads;
-            document.getElementById('x-link').href = portfolioData.socialLinks.x;
-        });
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');   
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            document.documentElement.classList.toggle('dark', e.matches);
-        });
-    </script>
-</body>
-</html>
+    <div class="max-w-[638px] flex-grow flex flex-col justify-center items-center gap-2 pt-[33px]">
+        <a href="about.html">
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Who I Am</div>
+            </button>
+        </a>
+        <a href="works.html">
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Stuff I’ve Built</div>
+            </button>
+        </a>
+        <a href="experience.html">
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Path</div>
+            </button>
+        </a>
+        <a href="writings.html">
+            <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">My Thoughts</div>
+            </button>
+        </a>
+        <button class="hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 transition duration-200 px-3 py-1 rounded-lg justify-center items-center gap-2.5 inline-flex">
+            <div class="text-black/75 dark:text-gray-300 text-sm md:text-base font-medium font-['Inter']">Life</div>
+        </button>
+    </div>
+    <footer class="w-full flex justify-center items-center gap-4 pb-4">
+        <a href="https://www.instagram.com/uxnijin/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+            <img src="assets/instagram.svg" alt="Instagram" height="20" width="20" class="dark:hidden">
+            <img src="assets/instagram-dark.svg" alt="Instagram Dark" height="20" width="20" class="hidden dark:block">
+        </a>
+        <a href="https://medium.com/@nijinmuhammed" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+            <img src="assets/medium.svg" alt="Medium" height="20" width="20" class="dark:hidden">
+            <img src="assets/medium-dark.svg" alt="Medium Dark" height="20" width="20" class="hidden dark:block">
+        </a>
+        <a id="contact-link">
+            <button class="px-3 py-2 rounded-[45px] border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:scale-105 transition duration-200 text-sm font-medium font-['Inter'] hover:bg-black/10 dark:hover:bg-white/10">
+                contact
+            </button>
+        </a>
+        <a href="https://www.threads.net/@uxnijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+            <img src="assets/threads.svg" alt="Threads" height="20" width="20" class="dark:hidden">
+            <img src="assets/threads-dark.svg" alt="Threads Dark" height="20" width="20" class="hidden dark:block">
+        </a>
+        <a href="https://x.com/MuhammedNijin" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/25 dark:border-gray-600 text-black/75 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:scale-105 transition duration-200">
+            <img src="assets/x.svg" alt="X" height="20" width="20" class="dark:hidden">
+            <img src="assets/x-dark.svg" alt="X Dark" height="20" width="20" class="hidden dark:block">
+        </a>
+    </footer>
+</div>
+<script src="data.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('bio-name').innerHTML = portfolioData.bio.name;
+        document.getElementById('contact-link').href = portfolioData.contactEmail;
+    });
+</script>
